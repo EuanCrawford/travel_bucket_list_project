@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Add a new destination!</h2>
+<form action="/destinations" method="POST">
+    <div>
+        <label for="city">
+            City: 
+        </label>
+        <select id="city" name="city_id">
+            {% for city in all_cities %}
+                <option value="{{ city.id }}">
+                    {{ city.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="country">
+            Country: 
+        </label>
+        <select id="country" name="country_id">
+            {% for country in all_countries %}
+                <option value="{{ country.id }}">
+                    {{ country.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="continent">
+            Continent: 
+        </label>
+        <input type="text" id="continent" name="continent" placeholder="continent" required autofocus>
+    </div>
+    <div>
+        <textarea name="review" id="review" cols="30" rows="10" placeholder="leave a review or comment!"></textarea>
+    </div>
+    <div>
+        <input type="checkbox" id="visited" name="visited" value="visited">
+        <label for="visited">
+            Visited? 
+        </label>
+    </div>
+    <button type="submit">
+        Add Destination
+    </button>
+</form>
+
+{% endblock content %}

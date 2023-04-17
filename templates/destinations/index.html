@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% for destination in destinations %}
+    <div class="destination">
+        <div class="content">
+        <div class="country">
+            <a href="/destinations/{{destination.city.name}}">{{destination.city.name}}</a><br>
+            <a href="/destinations/{{destination.country.name}}">{{destination.country.name}}</a><br>
+            {{destination.visited}}<br>
+            <p>{{destination.review}}</p>
+        </div>
+        </div>
+        <div class="buttons">
+
+            <form action="/destinations/{{destination.id}}/delete" method="POST">
+                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true">Delete</i></button>
+            </form>
+
+            {% if destination.visited %}
+                <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i>
+            {% else %}
+                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
