@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="/cities/{{city.id}}" method="post">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" value="{{ city.name }}" required>
+    </div>
+    <div>
+        <label for="country">Country: </label>
+        <select id="country" name="country_id">
+        {% for country in all_countries %}
+            <option value="{{ country.id }}" {% if city.country.id == country.id %} selected="selected"{% endif %}>
+            {{ country.name }}
+            </option>
+        {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="continent">Continent: </label>
+        <input type="text" id="continent" name="continent" value="{{city.continent}}" required>
+    </div>
+    <button type="submit">Update City</button>
+</form>
+{% endblock content %}

@@ -47,19 +47,20 @@ def delete(id):
 def update(city):
     sql = "UPDATE cities SET (city_name, country_id, continent) = (%s, %s, %s) WHERE id = %s"
     values = [city.name, city.country.id, city.continent]
+    print(values)
     run_sql(sql, values)
 
-def new_city(city):
-    destinations = []
+# def new_city(city):
+#     destinations = []
 
-    sql = "SELECT * FROM cities WHERE city_id = %s"
-    values = [city.id]
-    results = run_sql(sql, values)
+#     sql = "SELECT * FROM cities WHERE city_id = %s"
+#     values = [city.id]
+#     results = run_sql(sql, values)
 
-    for row in results:
-        destination = Destination(row['city_id'], row['country_id'], row['visited'], row['id'] )
-        destinations.append(destination)
-    return destinations
+#     for row in results:
+#         destination = Destination(row['city_id'], row['country_id'], row['visited'], row['id'] )
+#         destinations.append(destination)
+#     return destinations
 
 # def countries(city):
 #     countries = []

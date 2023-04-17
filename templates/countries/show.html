@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    
+<div>
+    <p>{{country.name}}</p>
+    <p>{{country.continent}}</p>
+    <p><a href="/countries/{{country.id}}/edit">Edit</a></p>
+</div>
 {% endblock content %}

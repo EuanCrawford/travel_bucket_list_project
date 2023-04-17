@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    
+
+{% for city in all_cities %}
+    <div class="city">
+        <div class="content">
+            <p><a href="/cities/{{city.id}}">{{city.name}}</a></p>
+        </div>
+    </div>
+{% endfor %}
+
 {% endblock content %}

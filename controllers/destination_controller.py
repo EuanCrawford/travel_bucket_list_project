@@ -45,9 +45,9 @@ def show_destination(id):
 @destination_blueprint.route("/destinations/<id>/edit", methods = ['GET'])
 def edit_destination(id):
     destination = destination_repository.select(id)
-    city = city_repository.select_all()
-    country = country_repository.select_all()
-    return render_template("destinations/edit.html", destination = destination, city = city, country = country)
+    cities = city_repository.select_all()
+    countries = country_repository.select_all()
+    return render_template("destinations/edit.html", destination = destination, all_cities = cities, all_country = countries)
 
 # UPDATE
 
