@@ -13,7 +13,7 @@ def save(destination):
     return destination
 
 def select_all():
-    items = []
+    destinations = []
 
     sql = "SELECT * FROM destinations"
     results = run_sql(sql)
@@ -22,11 +22,11 @@ def select_all():
         city = city_repository.select(row['city_id'])
         country = country_repository.select(row['country_id'])
         item = Destination(city, country, row['visited'], row['review'], row['id'] )
-        items.append(item)
-    return items
+        destinations.append(item)
+    return destinations
 
 def select(id):
-    item = None
+    destination = None
     sql = "SELECT * FROM destinations WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)
@@ -35,8 +35,8 @@ def select(id):
         result = results[0]
         city = city_repository.select(result['city_id'])
         country = country_repository.select(result['country_id'])
-        item = Destination(city, country, result['visited'], result['review'], result['id'] )
-    return item
+        destination = Destination(city, country, result['visited'], result['review'], result['id'] )
+    return destination
 
 def delete_all():
     sql = "DELETE FROM destinations"

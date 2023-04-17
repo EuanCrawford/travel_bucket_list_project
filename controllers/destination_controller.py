@@ -27,9 +27,9 @@ def create_destination():
     city_id = request.form['city_id']
     country = country_repository.select(country_id)
     city = city_repository.select(city_id)
-    visited = request.form['visited']
+    visited = True if 'visited' in request.form else False
     review = request.form['review']
-    destination = Destination(country, city, visited, review)
+    destination = Destination(city, country, visited, review)
     destination_repository.save(destination)
     return redirect("/destinations")
 
@@ -37,10 +37,8 @@ def create_destination():
 
 @destination_blueprint.route("/destinations/<id>", methods = ['GET'])
 def show_destination(id):
-    country = country_repository.select(id)
-    city = city_repository.select(id)
     destination = destination_repository.select(id)
-    return render_template("destinations/show.html", destination = destination, city = city, country = country)
+    return render_template("destinations/show.html", destination = destination)
 
 # EDIT
 
@@ -59,7 +57,7 @@ def update_destination(id):
     country = country_repository.select(country_id)
     city_id = request.form['city_id']
     city = city_repository.select(city_id)
-    visited = request.form['visited']
+    visited = True if 'visited' in request.form else False
     review = request.form['review']
     destination = Destination(country, city, visited, review, id)
     destination_repository.update(destination)
