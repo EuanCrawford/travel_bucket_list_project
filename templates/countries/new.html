@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add a new country!</h2>
+<form action="/countries" method="POST">
+    <div>
+        <label for="name">
+            Name: 
+        </label>
+        <input type="text" id="name" name="name" placeholder="Name" required autofocus>
+    </div>
+    <div>
+        <label for="continent">
+            Continent: 
+        </label>
+        <input type="text" id="continent" name="continent" placeholder="Continent" required autofocus>
+    </div>
+    <button type="submit">
+        Add Country
+    </button>
+</form>
+{% endblock content %}

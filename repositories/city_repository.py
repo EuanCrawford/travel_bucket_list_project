@@ -3,6 +3,7 @@ from db.run_sql import run_sql
 from models.city import City
 from models.country import Country
 from models.destination import Destination
+import repositories.country_repository as country_repository
 
 def save(city):
     sql = "INSERT INTO cities (city_name, country_id, continent) VALUES (%s, %s, %s) RETURNING id"
@@ -56,6 +57,19 @@ def new_city(city):
     results = run_sql(sql, values)
 
     for row in results:
-        destination = Destination(row['country_id'], row['city_id'], row['visited'], row['id'] )
+        destination = Destination(row['city_id'], row['country_id'], row['visited'], row['id'] )
         destinations.append(destination)
     return destinations
+
+# def countries(city):
+#     countries = []
+
+#     sql = "SELECT countries.* FROM countries INNER JOIN destination ON destination.country_id = countries.id WHERE city_id = %s"
+#     values = [city.id]
+#     results = run_sql(sql, values)
+
+#     for row in results:
+#         country = Country(row['name'], row['continent'], row['id'])
+#         countries.append(country)
+
+#     return countries

@@ -21,8 +21,8 @@ def select_all():
     for row in results:
         city = city_repository.select(row['city_id'])
         country = country_repository.select(row['country_id'])
-        item = Destination(city, country, row['visited'], row['review'], row['id'] )
-        destinations.append(item)
+        destination = Destination(city, country, row['visited'], row['review'], row['id'] )
+        destinations.append(destination)
     return destinations
 
 def select(id):
@@ -33,8 +33,8 @@ def select(id):
 
     if results:
         result = results[0]
-        city = city_repository.select(result['city_id'])
         country = country_repository.select(result['country_id'])
+        city = city_repository.select(result['city_id'])
         destination = Destination(city, country, result['visited'], result['review'], result['id'] )
     return destination
 
