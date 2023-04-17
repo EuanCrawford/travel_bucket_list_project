@@ -9,16 +9,12 @@
         <label for="country">Country: </label>
         <select id="country" name="country_id">
         {% for country in all_countries %}
-            <option value="{{ country.id }}" {% if city.country.id == country.id %} selected="selected"{% endif %}>
+            <option value="{{ country.id }}" {% if country.id == city.country.id %} selected="selected"{% endif %}>
             {{ country.name }}
             </option>
         {% endfor %}
         </select>
     </div>
-    <div>
-        <label for="continent">Continent: </label>
-        <input type="text" id="continent" name="continent" value="{{city.continent}}" required>
-    </div>
-    <button type="submit">Update City</button>
+    <input type="submit">
 </form>
 {% endblock content %}

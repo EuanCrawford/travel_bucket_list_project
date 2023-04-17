@@ -6,8 +6,8 @@ from models.destination import Destination
 import repositories.country_repository as country_repository
 
 def save(city):
-    sql = "INSERT INTO cities (city_name, country_id, continent) VALUES (%s, %s, %s) RETURNING id"
-    values = [city.name, city.country.id, city.continent]
+    sql = "INSERT INTO cities (city_name, country_id) VALUES (%s, %s) RETURNING id"
+    values = [city.name, city.country.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     city.id = id
@@ -20,7 +20,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        city = City(row['city_name'], row['country_id'], row['continent'], row['id'])
+        country = country_repository.select(row['country_id'])
+        city = City(row['city_name'], country, row['id'])
         cities.append(city)
     return cities
 
@@ -32,7 +33,8 @@ def select(id):
 
     if results:
         result = results[0]
-        city = City(result['city_name'], result['country_id'], result['continent'], result['id'])
+        country = country_repository.select(result['country_id'])
+        city = City(result['city_name'], country, result['id'])
     return city
 
 def delete_all():
@@ -45,8 +47,8 @@ def delete(id):
     run_sql(sql, values)
 
 def update(city):
-    sql = "UPDATE cities SET (city_name, country_id, continent) = (%s, %s, %s) WHERE id = %s"
-    values = [city.name, city.country.id, city.continent]
+    sql = "UPDATE cities SET (city_name, country_id) = (%s, %s) WHERE id = %s"
+    values = [city.name, city.country.id, city.id]
     print(values)
     run_sql(sql, values)
 

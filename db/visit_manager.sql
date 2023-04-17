@@ -11,8 +11,7 @@ CREATE TABLE countries (
 CREATE TABLE cities (
     id SERIAL PRIMARY KEY,
     city_name VARCHAR(255),
-    country_id INT REFERENCES countries(id) ON DELETE CASCADE,
-    continent VARCHAR(255)
+    country_id INT REFERENCES countries(id) ON DELETE CASCADE
 );
 
 CREATE TABLE destinations (
