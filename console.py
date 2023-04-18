@@ -47,7 +47,7 @@ city_repository.save(city5)
 city6 = City("Buenos Aires", country6, "South America")
 city_repository.save(city6)
 
-destination1 = Destination(england_city1, country1, True, "Fun!")
+destination1 = Destination(england_city1, country1, False, "Fun!")
 destination_repository.save(destination1)
 
 destination2 = Destination(city5, country5, False, "Looks cool!")

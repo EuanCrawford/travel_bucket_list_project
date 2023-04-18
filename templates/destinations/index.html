@@ -7,15 +7,16 @@
         <div class="content">
                 <a href="/cities/{{destination.city.id}}">{{destination.city.name}}</a><br>
                 <a href="/countries/{{destination.country.id}}">{{destination.country.name}}</a><br>
-                {{destination.visited}}<br>
+                <p>{{ destination.visited }}</p><br>
                 <p>{{destination.review}}</p>
         </div>
     </div>
     <div class="buttons">
         <form action="/destinations/{{destination.id}}/delete" method="POST">
-            <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true">Delete</i></button>
+            <button class="trash-button"><i class="fa fa-ban fa fw" style="color:red" aria-hidden="true"></i></button>
         </form>
     </div>
+    <p><a href="/destinations/{{destination.id}}/edit">Edit</a></p>
 {% endfor %}
 
 {% endblock %}

@@ -1,4 +1,5 @@
 body {
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
@@ -6,3 +7,63 @@ body {
     padding: 0px;
     margin: 0px;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Lucida Console", Monaco, monospace;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    font-size: 1.8em;
+    color: #E1DABD;
+    margin-bottom: 20px;
+}
+
+a, a:link, a:visited {
+    color: #0094C6;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    color: #8EE3EF;
+}
+
+nav {
+    padding: 0px;
+    margin: 0px;
+    padding-right: 25px;
+    text-align: right;
+}
+
+nav ul li {
+    padding: 5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    display: inline-block;
+    ;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+main {
+    padding: 25px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex--row {
+    flex-direction: row;
+}
+
+#content {
+    border-left: 1px solid #254E70;
+    padding-left: 25px;
+}
+  

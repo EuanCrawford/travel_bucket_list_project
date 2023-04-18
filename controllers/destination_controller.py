@@ -27,7 +27,7 @@ def create_destination():
     city_id = request.form['city_id']
     country = country_repository.select(country_id)
     city = city_repository.select(city_id)
-    visited = True if 'visited' in request.form else False
+    visited = False
     review = request.form['review']
     destination = Destination(city, country, visited, review)
     destination_repository.save(destination)
@@ -38,20 +38,22 @@ def create_destination():
 @destination_blueprint.route("/destinations/<id>", methods = ['GET'])
 def show_destination(id):
     destination = destination_repository.select(id)
-    return render_template("destinations/show.html", destination = destination)
+    countries = country_repository.select_all()
+    cities = city_repository.select_all()
+    return render_template("destinations/show.html", destination = destination, all_cities = cities, all_countries = countries)
 
 # EDIT
 
-@destination_blueprint.route("/destinations/<id>/edit", methods = ['GET'])
+@destination_blueprint.route("/destinations/<id>/edit", methods = ['GET', 'POST'])
 def edit_destination(id):
     destination = destination_repository.select(id)
     cities = city_repository.select_all()
     countries = country_repository.select_all()
-    return render_template("destinations/edit.html", destination = destination, all_cities = cities, all_country = countries)
+    return render_template("destinations/edit.html", destination = destination, all_cities = cities, all_countries = countries)
 
 # UPDATE
 
-@destination_blueprint.route("/destinations/<id>", methods = ['POST'])
+@destination_blueprint.route("/destinations/<id>", methods = ['GET', 'POST'])
 def update_destination(id):
     country_id = request.form['country_id']
     country = country_repository.select(country_id)
@@ -59,7 +61,7 @@ def update_destination(id):
     city = city_repository.select(city_id)
     visited = True if 'visited' in request.form else False
     review = request.form['review']
-    destination = Destination(country, city, visited, review, id)
+    destination = Destination(city, country, visited, review, id)
     destination_repository.update(destination)
     return redirect("/destinations")
 
@@ -69,3 +71,4 @@ def update_destination(id):
 def delete_destination(id):
     destination_repository.delete(id)
     return redirect("/destinations")
+

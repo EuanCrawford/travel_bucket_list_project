@@ -52,6 +52,11 @@ def update(city):
     print(values)
     run_sql(sql, values)
 
+def search():
+    sql = "SELECT * FROM cities WHERE city_name LIKE ? OR country_id LIKE ?", ("%"+search+"%", "%"+search+"%"),
+    run_sql(sql)
+
+
 # def new_city(city):
 #     destinations = []
 

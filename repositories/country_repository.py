@@ -60,3 +60,7 @@ def destinations(country):
         destination = Destination(row['city'], row['country_id'], row['visited'], row['id'] )
         destinations.append(destination)
     return destinations
+
+def search():
+    sql = "SELECT * FROM countries WHERE country_name LIKE ? OR continent LIKE ?", ("%"+search+"%", "%"+search+"%"),
+    run_sql(sql)
