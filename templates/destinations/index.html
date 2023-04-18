@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-
-
+<a href="/destinations/visited">Visited</a>
+<a href="/destinations/unvisited">Unvisited</a>
+<h3>
+    Please add a destination to start your bucket list!
+</h3>
 {% for destination in destinations %}
     <div class="destination">
         <div class="content">
-                <a href="/cities/{{destination.city.id}}">{{destination.city.name}}</a><br>
-                <a href="/countries/{{destination.country.id}}">{{destination.country.name}}</a><br>
+                <a href="/destinations/{{destination.id}}"><p>{{ destination.city.name }}</p></a><br>
+                <p>{{ destination.country.name }}</p><br>
                 <p>{{ destination.visited }}</p><br>
-                <p>{{destination.review}}</p>
+                <p>{{ destination.review }}</p>
         </div>
     </div>
     <div class="buttons">

@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
-{% block content %}    
-
+{% block content %}
     <div>
         <p>{{destination.city.name}}</p>
-        <hr>
         <p>{{destination.country.name}}</p>
         <p>{{destination.visited}}</p>
         <p>{{destination.review}}</p>
-        <p><a href="/destination/{{destination.id}}/edit">Edit</a></p>
+        <p><a href="/destinations/{{destination.id}}/edit">Edit</a></p>
     </div>
-
 {% endblock content %}

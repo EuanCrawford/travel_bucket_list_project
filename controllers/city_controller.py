@@ -23,8 +23,7 @@ def create_city():
 @city_blueprint.route('/cities/<id>', methods=['GET'])
 def show_city(id):
     city = city_repository.select(id)
-    countries = country_repository.select_all()
-    return render_template("cities/show.html", city = city, all_countries = countries)
+    return render_template("cities/show.html", city = city)
 
 @city_blueprint.route('/cities/new', methods=['GET'])
 def new_city():
