@@ -2,7 +2,7 @@
 {% block content %}
 {% for destination in destinations %}
     {% if destination.visited %}
-        <p>{{ destination.city.name }}</p>
+        <p class="show-title">{{ destination.city.name }}</p>
     {% endif %}
 {% endfor %}
 {% endblock content %}

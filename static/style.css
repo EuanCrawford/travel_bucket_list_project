@@ -6,8 +6,10 @@
 
 .logo img {
     float: left;
-    height: 40px;
-    width: 80px;
+    margin: 10px;
+    padding: 7px;
+    height: 50px;
+    width: 125px;
     
 }
 
@@ -18,12 +20,12 @@
     width: 100%;
     padding: 7px;
     overflow: hidden;
+    padding-bottom: 10px;
 }
 
 ul.menu {
-    text-align: right;
-    align-items: right;
     padding: 10px;
+    float: right;
 }
 
 footer {
@@ -38,18 +40,44 @@ footer {
 }
 
 a {
-    color: skyblue;
-    text-decoration: none;
+    color: black;
 }
 
 a:hover {
     color: gray;
-    text-decoration: underline;
 }
 
-#content {
+.destinations-container {
     display: grid;
-    grid-template-columns: 95px 1fr;
+    grid-template-columns: 1fr;
+    margin: 10px;
+    padding: 7px;
+}
+
+.country-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px;
+    padding: 7px;
+}
+
+.city-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px;
+    padding: 7px;
+}
+
+.show-city-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px;
+    padding: 7px;
+}
+
+.show-country-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 10px;
     padding: 7px;
 }
@@ -58,4 +86,29 @@ a:hover {
     margin: 10px;
     padding: 7px;
     color: darkgray;
+}
+
+.edit-title {
+    margin: 10px;
+    padding: 7px;
+}
+
+.show-title {
+    margin: 10px;
+    padding: 7px;
+}
+
+.home-screen {
+    margin: 10px;
+    padding: 7px;
+}
+
+.new-title {
+    margin: 10px;
+    padding: 7px;
+}
+
+.new-dest, .new-city, .new-country {
+    margin: 10px;
+    padding: 7px;
 }

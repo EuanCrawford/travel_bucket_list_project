@@ -4,29 +4,29 @@
     <a href="/destinations/visited">Visited</a>
     <a href="/destinations/unvisited">Unvisited</a>
 </div>
-{% for destination in destinations %}
 <div class="destinations-container">
-    <div class="destinations">
-        <div id="content">
-                <p>City: <a href="/destinations/{{destination.id}}">{{ destination.city.name }}</p></a><br>
-                <p>Country: {{ destination.country.name }}</p><br>
-                {% if destination.visited %}
-                    <p><i class="fa fa-check fa fw" aria-hidden="true"></i>: Visited!</p><br>
-                {% else %}
-                    <p><i class="fa fa-times fa fw" aria-hidden="true">: Still to Visit!</i></p><br>
-                {% endif %}
-                <p>Review: {{ destination.review }}</p>
+    {% for destination in destinations %}
+        <div class="destinations">
+            <div id="content">
+                    <p>City: <a href="/destinations/{{destination.id}}">{{ destination.city.name }}</p></a><br>
+                    <p>Country: {{ destination.country.name }}</p><br>
+                    {% if destination.visited %}
+                        <p><i class="fa fa-check fa fw" aria-hidden="true"></i>: Visited!</p><br>
+                    {% else %}
+                        <p><i class="fa fa-times fa fw" aria-hidden="true">: Still to Visit!</i></p><br>
+                    {% endif %}
+                    <p>Review: {{ destination.review }}</p>
+            </div>
         </div>
-    </div>
-    <div class="buttons">
-        <form action="/destinations/{{destination.id}}/delete" method="POST">
-            <button class="trash-button"><i class="fa fa-ban fa fw" style="color:red" aria-hidden="true"></i></button>
-        </form>
-    </div>
-    <div class="edit-buttons">
-        <p><a href="/destinations/{{destination.id}}/edit">Edit</a></p>
-    </div>
+        <div class="buttons">
+            <form action="/destinations/{{destination.id}}/delete" method="POST">
+                <button class="trash-button"><i class="fa fa-ban fa fw" style="color:red" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        <div class="edit-buttons">
+            <p><a href="/destinations/{{destination.id}}/edit">Edit</a></p>
+        </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
 {% endblock %}
