@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/destinations/visited">Visited</a>
-<a href="/destinations/unvisited">Unvisited</a>
-<h3>
-    Please add a destination to start your bucket list!
-</h3>
+<div class="visited-links">
+    <a href="/destinations/visited">Visited</a>
+    <a href="/destinations/unvisited">Unvisited</a>
+</div>
 {% for destination in destinations %}
-    <div class="destination">
-        <div class="content">
-                <a href="/destinations/{{destination.id}}"><p>{{ destination.city.name }}</p></a><br>
-                <p>{{ destination.country.name }}</p><br>
-                <p>{{ destination.visited }}</p><br>
-                <p>{{ destination.review }}</p>
+<div class="destinations-container">
+    <div class="destinations">
+        <div id="content">
+                <p>City: <a href="/destinations/{{destination.id}}">{{ destination.city.name }}</p></a><br>
+                <p>Country: {{ destination.country.name }}</p><br>
+                {% if destination.visited %}
+                    <p><i class="fa fa-check fa fw" aria-hidden="true"></i>: Visited!</p><br>
+                {% else %}
+                    <p><i class="fa fa-times fa fw" aria-hidden="true">: Still to Visit!</i></p><br>
+                {% endif %}
+                <p>Review: {{ destination.review }}</p>
         </div>
     </div>
     <div class="buttons">
@@ -19,7 +23,10 @@
             <button class="trash-button"><i class="fa fa-ban fa fw" style="color:red" aria-hidden="true"></i></button>
         </form>
     </div>
-    <p><a href="/destinations/{{destination.id}}/edit">Edit</a></p>
+    <div class="edit-buttons">
+        <p><a href="/destinations/{{destination.id}}/edit">Edit</a></p>
+    </div>
+</div>
 {% endfor %}
 
 {% endblock %}

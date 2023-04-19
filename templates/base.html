@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Your Bucket List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Your Bucket List</title>
 </head>
-<body>
-<header>
-    <nav>
-    <ul class="menu">
-        <li><a href="/"><i class="fa-solid fa-home fa fw"></i>Home</a></li>
-        <li><a href="/destinations"><i class="fa-solid fa-plane fa fw"></i>Destinations</a></li>
-        <li><a href="/cities"><i class="fa-solid fa-university fa fw"></i>Cities</a></li>
-        <li><a href="/countries"><i class="fa-solid fa-flag fa fw"></i>Countries</a></li>
-        <li><a href="/destinations/new"><i class="fa-solid fa-plane fa fw"></i>Add a Destination</a></li>
-    </ul>
-    </nav>
+<header class="main-header">
+    <div class="header-image">
+        <nav>
+            <a href="/" class="logo"><img src="static/images/logo.png"></a>
+            <ul class="menu">
+                <a href="/destinations"><i class="fa-solid fa-plane fa fw"></i>Destinations</a>
+                <a href="/destinations/new"><i class="fa-solid fa-plane fa fw"></i>Add a Destination</a>
+            </ul>
+        </nav>
+    </div>
 </header>
-<div class="container">
-    {% block content %}
-    {% endblock %}
-</div>
+<body>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
+<footer>
+    <div>
+        <ul>
+            <div class="footer-links">
+                <ul>
+                    <a href="/cities"><i class="fa-solid fa-university fa fw"></i>Cities</a>
+                    <a href="/countries"><i class="fa-solid fa-flag fa fw"></i>Countries</a>
+                </ul>
+            </div>
+        </ul>
+    </div>
+</footer>
 </html>
